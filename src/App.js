@@ -35,12 +35,19 @@ function App() {
 		}
 	}
 	const showNextStep = () => {
-		dispatch(updateStep(currentStep + 1));
+		if (currentStep <= 1) {
+			dispatch(updateStep(currentStep + 1));
+		}
 		TweenMax.to(steps.current[currentStep + 1], 1, {
 			opacity: 1,
 			ease: Power3.easeInOut
 		})
 	}
+	const encode = (data) => {
+		return Object.keys(data)
+			.map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+			.join('&');
+	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (email && fname && lname) {
@@ -49,6 +56,13 @@ function App() {
 				fname,
 				lname
 			})
+			fetch("/", {
+					method: "POST",
+					headers: { "Content-Type": "application/x-www-form-urlencoded" },
+					body: encode({ "form-name": "contact", ...userInput })
+				})
+				.then(() => dispatch(updateStep(currentStep + 1)))
+				.catch(error => console.error(error));
 		}
 		TweenMax.to(steps.current[currentStep], 0.5, {
 			opacity: 0,
@@ -96,8 +110,9 @@ function App() {
 							<h1>join the list</h1>
 							<div className="form-container">
 								<h2>ALMOST DONE! PLEASE ENTER YOUR FIRST AND LAST NAME.</h2>
-								<form onSubmit={handleSubmit}>
+								<form onSubmit={handleSubmit} data-netlify="true" name="newsletter">
 									<div className="form-group">
+										<input type="hidden" name="newsletter" value="contact" />
 										<input onChange={handleChange} value={fname} placeholder="First Name" name="fname" type="text" required />
 										<input onChange={handleChange} value={lname} placeholder="Last Name" name="lname" type="text" required />
 										<button type="submit">Sign Up</button>
@@ -116,8 +131,8 @@ function App() {
 							</div>
 						</div>
 					)}
-				</div>
 
+				</div>
 			</div>
 		</div>
 	);
