@@ -20,11 +20,11 @@ function App() {
 		}), {
 			email: '',
 			checkbox: false,
-			fname: '',
-			lname: '',
+			firstName: '',
+			lastName: '',
 		}
 	);
-	const { email, checkbox, fname, lname } = userInput;
+	const { email, checkbox, firstName, lastName } = userInput;
 	const handleChange = (e) => {
 		const name = e.target.name;
 		const newValue = e.target.value;
@@ -35,9 +35,7 @@ function App() {
 		}
 	}
 	const showNextStep = () => {
-		if (currentStep <= 1) {
-			dispatch(updateStep(currentStep + 1));
-		}
+		dispatch(updateStep(currentStep + 1));
 		TweenMax.to(steps.current[currentStep + 1], 1, {
 			opacity: 1,
 			ease: Power3.easeInOut
@@ -50,19 +48,19 @@ function App() {
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		if (email && fname && lname) {
+		if (email && firstName && lastName) {
 			console.log({
 				email,
-				fname,
-				lname
+				firstName,
+				lastName
 			})
 			fetch("/", {
 					method: "POST",
 					headers: { "Content-Type": "application/x-www-form-urlencoded" },
 					body: encode({ "form-name": "contact", ...userInput })
 				})
-				.then(() => dispatch(updateStep(currentStep + 1)))
-				.catch(error => console.error(error));
+				.then(() => console.log("Success"))
+				.catch(error => console.log(error));
 		}
 		TweenMax.to(steps.current[currentStep], 0.5, {
 			opacity: 0,
@@ -110,11 +108,11 @@ function App() {
 							<h1>join the list</h1>
 							<div className="form-container">
 								<h2>ALMOST DONE! PLEASE ENTER YOUR FIRST AND LAST NAME.</h2>
-								<form onSubmit={handleSubmit} data-netlify="true" name="newsletter">
+								<form onSubmit={handleSubmit} data-netlify="true" netlify name="newsletter">
 									<div className="form-group">
-										<input type="hidden" name="newsletter" value="contact" />
-										<input onChange={handleChange} value={fname} placeholder="First Name" name="fname" type="text" required />
-										<input onChange={handleChange} value={lname} placeholder="Last Name" name="lname" type="text" required />
+										<input type="hidden" name="form-name" value="contact" />
+										<input onChange={handleChange} value={firstName} placeholder="First Name" name="firstName" type="text" required />
+										<input onChange={handleChange} value={lastName} placeholder="Last Name" name="lastName" type="text" required />
 										<button type="submit">Sign Up</button>
 									</div>
 								</form>
