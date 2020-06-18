@@ -1,0 +1,200 @@
+// Reset
+* {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "display";
+	src: url("../fonts/Elaine_D02/Elaine_D02.woff");
+}
+@font-face {
+	font-family: "azo-bold";
+	src: url("../fonts/Azo-Sans-Bold/Azo-Sans-Bold.woff");
+}
+@font-face {
+	font-family: "azo-light";
+	src: url("../fonts/Azo-Sans-Light/Azo-Sans-Light.woff");
+}
+
+// Variables
+// - Colors
+$darkBlue: #120F23;
+$lightBlue: #94AEBF;
+$lightGreen: #B6FDBF;
+$red: #ED1F34;
+$grey: #888888;
+// - Fonts
+$display: 'display';
+$azoBold: 'azo-bold';
+$azoLight: 'azo-light';
+
+body {
+	background: $darkBlue;
+	line-height: 1;
+}
+.App {
+	h1 {
+		font-family: $display;
+		color: $lightGreen;
+		font-size: 3.75rem;
+		text-align: right;
+		min-width: 30%;
+		padding-right: 3rem;
+	}
+	h2 {
+		font-family: $azoBold;
+		color: $lightBlue;
+		font-size: 2vw;
+		margin-bottom: 1rem;
+		font-size: 1.25rem;
+	}
+	label {
+		color: $grey;
+		font-family: $azoLight;
+		display: inline-block;
+		max-width: 400px;
+		line-height: 1.2;
+		a {
+			color: inherit;
+			&:hover {
+				color: $lightBlue;
+			}
+		}
+	}
+	button {
+		padding: 0.825rem 1rem;
+		font-family: $azoBold;
+		font-size: 1.25rem;
+		border: none;
+		background: $red;
+		color: white;
+		border-radius: 5px;
+		text-transform: uppercase;
+		cursor: pointer;
+		width: 20%;
+		margin-left: 0.75rem;
+		min-width: 150px;
+	}
+	input {
+		background: rgba(255, 255, 255, 0.1);
+		border: none;
+		color: white;
+		font-size: 20px;
+		border-radius: 5px;
+		padding: 0.825rem 1rem;
+		&::placeholder {
+			color: $lightBlue;
+		}
+	}
+	p {
+		font-family: $azoLight;
+		color: $lightBlue;
+		font-size: 1.2rem;
+		line-height: 1.2;
+	}
+	.inner {
+		display: flex;
+	}
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100vh;
+		width: 100vw;
+		.newsletter {
+			display: flex;
+			padding: 0 1.5rem;
+			opacity: 0;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			.form-container {
+				width: 70%;
+				form {
+					display: flex;
+					flex-wrap: wrap;
+					.form-group {
+						width: 100%;
+						display: flex;
+						align-items: flex-start;
+						&:first-of-type {
+							align-items: center;
+						}
+					}
+					input {
+						&[type="text"] {
+							margin-right: 0.75rem;
+							max-width: 500px;
+						}
+					}
+				}
+			}
+			&.step-1 {
+				.form-container {
+					form {
+						.form-group {
+							&:first-of-type {
+								margin-bottom: 1rem;
+								align-items: center;
+							}
+						}
+						input {
+							&[type="text"] {
+								width: 100%;
+							}
+							&[type="checkbox"] {
+								margin: 4px 1rem 0 0;
+							}
+						}
+					}
+				}
+			}
+
+			&.step-2 {
+				.form-container {
+					min-width: 300px;
+					form {
+						input {
+							&[type="text"] {
+								width: 35%;
+							}
+						}
+					}
+				}
+			}
+
+			&.step-3 {
+				h1 {
+					width: 50%;
+				}
+				.form-container {
+					width: 50%;
+					h2 {
+						width: 100%;
+					}
+					p {
+						width: 100%;
+					}
+				}
+			}
+
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.App {
+
+	}
+}
+
+@media (max-width: 480px) {
+	.App {
+
+	}
+}
