@@ -49,10 +49,11 @@ function App() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (email && firstName && lastName) {
+			const data = { email, firstName, lastName }
 			fetch("/", {
 					method: "POST",
 					headers: { "Content-Type": "application/x-www-form-urlencoded" },
-					body: encode({ "form-name": "contact", ...JSON.stringify(userInput) })
+					body: encode({ "form-name": "contact", ...data })
 				})
 				.then(() => console.log("Success"))
 				.catch(error => console.error(error));
@@ -101,7 +102,7 @@ function App() {
 								<h2>ALMOST DONE! PLEASE ENTER YOUR FIRST AND LAST NAME.</h2>
 								<form onSubmit={handleSubmit} data-netlify="true" netlify="true" name="newsletter">
 									<div className="form-group">
-										<input type="hidden" name="form-name" value="newsletter" />
+										<input type="hidden" name="form-name" form-name="newsletter" value="newsletter" />
 										<input onChange={handleChange} value={firstName} placeholder="First Name" name="firstName" type="text" required />
 										<input onChange={handleChange} value={lastName} placeholder="Last Name" name="lastName" type="text" required />
 										<button type="submit">Sign Up</button>
