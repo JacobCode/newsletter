@@ -73,7 +73,6 @@ function App() {
 		<div className="App">
 			<div className="container">
 				<div className="inner">
-
 					{currentStep === 0 && (
 						<div ref={el => steps.current[0] = el} className="newsletter step-1">
 							<h1>join the list</h1>
@@ -95,7 +94,6 @@ function App() {
 							</div>
 						</div>
 					)}
-
 					{currentStep === 1 && (
 						<div ref={el => steps.current[1] = el} className="newsletter step-2">
 							<h1>join the list</h1>
@@ -112,7 +110,6 @@ function App() {
 							</div>
 						</div>
 					)}
-
 					{currentStep === 2 && (
 						<div ref={el => steps.current[2] = el} className="newsletter step-3">
 							<h1>congratulations!</h1>
@@ -122,7 +119,6 @@ function App() {
 							</div>
 						</div>
 					)}
-
 				</div>
 			</div>
 		</div>
