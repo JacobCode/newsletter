@@ -81,9 +81,7 @@ function App() {
 
 					{currentStep === 0 && (
 						<div ref={el => steps.current[0] = el} className="newsletter step-1">
-							<div className="title">
-								<h1>join the list</h1>
-							</div>
+							<h1>join the list</h1>
 							<div className="form-container">
 								<h2>SIGN UP FOR THE IN-Dex NEWSLETTER.</h2>
 								<form onSubmit={handleSubmit}>

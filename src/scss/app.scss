@@ -43,8 +43,9 @@ body {
 		color: $lightGreen;
 		font-size: 3.75rem;
 		text-align: right;
-		min-width: 30%;
-		padding-right: 3rem;
+		width: 30%;
+		min-width: 275px;
+		padding-right: 2rem;
 	}
 	h2 {
 		font-family: $azoBold;
@@ -110,7 +111,6 @@ body {
 			display: flex;
 			padding: 0 1.5rem;
 			opacity: 0;
-			flex-wrap: wrap;
 			justify-content: center;
 			align-items: center;
 			.form-container {
@@ -189,7 +189,31 @@ body {
 
 @media (max-width: 768px) {
 	.App {
+		.container {
+			.newsletter {
+				.form-container {
+					form {
 
+					}
+					&.step-1 {
+						flex-direction: column;
+						background: red;
+						h1 {
+							width: 100%;
+							.form-container {
+								width: 100%;
+							}
+						}
+					}
+					&.step-2 {
+						
+					}
+					&.step-3 {
+						
+					}
+				}
+			}
+		}
 	}
 }
 
