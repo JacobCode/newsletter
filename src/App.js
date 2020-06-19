@@ -108,7 +108,7 @@ function App() {
 								<h2>ALMOST DONE! PLEASE ENTER YOUR FIRST AND LAST NAME.</h2>
 								<form onSubmit={handleSubmit} data-netlify="true" netlify name="newsletter">
 									<div className="form-group">
-										<input type="hidden" name="form-name" value="contact" />
+										<input type="hidden" name="form-name" value="newsletter" />
 										<input onChange={handleChange} value={firstName} placeholder="First Name" name="firstName" type="text" required />
 										<input onChange={handleChange} value={lastName} placeholder="Last Name" name="lastName" type="text" required />
 										<button type="submit">Sign Up</button>
