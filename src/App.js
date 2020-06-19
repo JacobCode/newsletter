@@ -49,18 +49,13 @@ function App() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (email && firstName && lastName) {
-			console.log({
-				email,
-				firstName,
-				lastName
-			})
 			fetch("/", {
 					method: "POST",
 					headers: { "Content-Type": "application/x-www-form-urlencoded" },
-					body: encode({ "form-name": "contact", ...userInput })
+					body: encode({ "form-name": "contact", ...JSON.stringify(userInput) })
 				})
 				.then(() => console.log("Success"))
-				.catch(error => console.log(error));
+				.catch(error => console.error(error));
 		}
 		TweenMax.to(steps.current[currentStep], 0.5, {
 			opacity: 0,
@@ -106,7 +101,7 @@ function App() {
 							<h1>join the list</h1>
 							<div className="form-container">
 								<h2>ALMOST DONE! PLEASE ENTER YOUR FIRST AND LAST NAME.</h2>
-								<form onSubmit={handleSubmit} data-netlify="true" netlify name="newsletter">
+								<form onSubmit={handleSubmit} data-netlify="true" netlify="true" name="newsletter">
 									<div className="form-group">
 										<input type="hidden" name="form-name" value="newsletter" />
 										<input onChange={handleChange} value={firstName} placeholder="First Name" name="firstName" type="text" required />
